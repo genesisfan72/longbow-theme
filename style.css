@@ -784,6 +784,16 @@ a:active {
 	margin: 0 0 1.5em;
 }
 
+.entry-title {
+	font-size: 2.5em;
+}
+
+.entry-meta {
+	font-family: "PT Serif", serif;
+	font-style: italic;
+	font-size: 1.5em;
+}
+
 .byline,
 .updated:not(.published) {
 	display: none;
@@ -807,7 +817,11 @@ a:active {
 
 .post-excerpt {
 	bottom: 0;
-	left: 0;
+	left: 11px;
+	top: 60%;
+	-webkit-transform: translateY(-60%);
+    -ms-transform: translateY(-60%);
+    transform: translateY(-60%);
 }
 
 .bg-image {
@@ -861,6 +875,9 @@ a:active {
 --------------------------------------------------------------*/
 header {
 	position: relative;
+}
+
+.site-header {
 	height: 80px;
 }
 

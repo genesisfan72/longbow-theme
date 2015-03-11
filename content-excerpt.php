@@ -4,7 +4,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'absolute', 'post-excerpt', 'alignvertical' ) ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'absolute', 'post-excerpt' ) ); ?>>
 	<header class="entry-header">
 		<?php the_title( sprintf( '<h1 class="entry-title alignvertical"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 
