@@ -29,10 +29,10 @@
 	<?php } ?>
 </div>
 
-<div id="post_headlines" class="container">
+<div id="post_headlines" class="container scroll-container">
 	<?php
 		// Get up to two more posts
-		$args = array( 'posts_per_page' => 2, 'offset' => 1 );
+		$args = array( 'offset' => 1 );
 		$fp_posts = get_posts( $args );
 
 		foreach ( $fp_posts as $post ) {
@@ -53,10 +53,23 @@
 	?>
 </div>
 
-<div id="fp_pagination" class="container-fluid">
+<div id="fp_pagination" class="container btn-container">
 	<div class="row">
-		<?php
-			// Show 'next' and 'prev' links
-		?>
+        <div class="col-xs-6">
+            <div class="btn-longbow btn-previous col-xs-12 pull-right"><?php echo __( 'Previous', 'longbow' ); ?></div>
+        </div>
+        <div class="col-xs-6">
+            <div class="btn-longbow btn-next col-xs-12 pull-left"><?php echo __( 'Next', 'longbow' ); ?></div>
+        </div>
 	</div>
+</div>
+
+<div id="products" class="container-fluid products-container">
+    <ul>
+        <li class="product-square"></li>
+        <li class="product-square"></li>
+        <li class="product-square"></li>
+        <li class="product-square"></li>
+    </ul>
+
 </div>

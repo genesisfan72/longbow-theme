@@ -13,6 +13,60 @@ if ( ! isset( $content_width ) ) {
 }
 
 /**
+ * Include the TGM_Plugin_Activation class.
+ */
+require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
+
+add_action( 'tgmpa_register', 'woc_broadsword_register_required_plugins' );
+/**
+ * Register the required plugins for this theme.
+ */
+function woc_broadsword_register_required_plugins() {
+
+    $plugins = array(
+        array(
+            'name'      => 'Wordpress Retina 2x',
+            'slug'      => 'wp-retina-2x',
+            'required'  => true,
+        )
+    );
+
+    $theme_text_domain = 'woc_broadsword';
+
+    /**
+     * Array of configuration settings. Uncomment and amend each line as needed.
+     * If you want the default strings to be available under your own theme domain,
+     * uncomment the strings and domain.
+     * Some of the strings are added into a sprintf, so see the comments at the
+     * end of each line for what each argument will be.
+     */
+    $config = array(
+        'domain'       => $theme_text_domain,
+        'menu'         => 'install-my-theme-plugins',
+        'has_notices'  => true, // Show admin notices
+        'dismissable'  => false, // If false, a user cannot dismiss the nag message.
+        'dismiss_msg'  => '', // If 'dismissable' is false, this message will be output at top of nag.
+        'is_automatic' => false, // Automatically activate plugins after installation or not.
+        'strings'      	 => array(
+            'page_title'             => __( 'Install Recommended Plugins', $theme_text_domain ),
+            'menu_title'             => __( 'Install Plugins', $theme_text_domain ),
+            'instructions_install'   => __( 'The %1$s plugin is recommended for this theme. Click on the big blue button below to install and activate %1$s.', $theme_text_domain ),
+            'instructions_activate'  => __( 'The %1$s is installed but currently inactive. Please go to the <a href="%2$s">plugin administration page</a> page to activate it.', $theme_text_domain ),
+            'button'                 => __( 'Install %s Now', $theme_text_domain ),
+            'installing'             => __( 'Installing Plugin: %s', $theme_text_domain ),
+            'oops'                   => __( 'Something went wrong with the plugin API.', $theme_text_domain ),
+            'notice_can_install'     => __( 'This theme recommends the use of the %1$s plugin. <a href="%2$s"><strong>Click here to begin the installation process</strong></a>. You may be asked for FTP credentials based on your server setup.', $theme_text_domain ),
+            'notice_cannot_install'  => __( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', $theme_text_domain ),
+            'notice_can_activate'    => __( 'This theme recommends the use of the %1$s plugin. That plugin is currently inactive, so please go to the <a href="%2$s">plugin administration page</a> to activate it.', $theme_text_domain ),
+            'notice_cannot_activate' => __( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', $theme_text_domain ),
+            'return'                 => __( 'Return to Plugins Installer', $theme_text_domain ),
+        ),
+    );
+
+    tgmpa( $plugins, $config );
+}
+
+/**
  * Find and return the url for the featured image for a post
  */
 if ( ! function_exists( 'longbow_featured_image' ) ) {
@@ -109,6 +163,33 @@ function longbow_widgets_init() {
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
+
+    register_sidebar(array(
+        'name'          => __( 'Footer 1', 'longbow' ),
+        'id'            => 'footer-1',
+        'before_widget' => '<aside class="widget well %2$s" id="%1$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar(array(
+        'name'          => __( 'Footer 2', 'longbow' ),
+        'id'            => 'footer-2',
+        'before_widget' => '<aside class="widget well %2$s" id="%1$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar(array(
+        'name'          => __( 'Footer 3', 'longbow' ),
+        'id'            => 'footer-3',
+        'before_widget' => '<aside class="widget well %2$s" id="%1$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
 }
 add_action( 'widgets_init', 'longbow_widgets_init' );
 
@@ -121,11 +202,13 @@ function longbow_scripts() {
 
 	wp_enqueue_style( 'longbow-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'longbow-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( 'longbow-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'longbow-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	wp_enqueue_script( 'longbow-bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array(), '20130115', true );
+
+    wp_enqueue_script( 'slideout', get_template_directory_uri() . '/assets/js/slideout.min.js', array(), '20130115', true );
+
+    wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

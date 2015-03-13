@@ -424,6 +424,21 @@ table {
 }
 
 /*--------------------------------------------------------------
+3.1 Longbow Elements
+--------------------------------------------------------------*/
+.btn-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.btn-longbow {
+    padding: 10px 5px;
+    border: 1px solid #000;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/*--------------------------------------------------------------
 4.0 Forms
 --------------------------------------------------------------*/
 button,
@@ -612,7 +627,7 @@ a:active {
 
 /* Small menu. */
 .menu-toggle {
-	display: none;
+    display: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -646,6 +661,33 @@ a:active {
 	float: right;
 	text-align: right;
 	width: 50%;
+}
+
+.slideout-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    width: 256px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+}
+
+.slideout-panel {
+    position:relative;
+    z-index: 1;
+}
+
+.slideout-open,
+.slideout-open body {
+    overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+    display: block;
 }
 
 /*--------------------------------------------------------------
@@ -911,6 +953,38 @@ header {
 	overflow: hidden;
 }
 
+.scroll-container {
+    height: 400px;
+    overflow: hidden;
+}
+
+.fp-post-row {
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.products-container {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.products-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.product-square {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background: #ccc;
+}
 /*--------------------------------------------------------------
 11.0 Infinite scroll
 --------------------------------------------------------------*/
@@ -1077,3 +1151,4 @@ object {
     -ms-transform:  scaleX(1.15) scaleY(1.15) ;
   }
 }
+

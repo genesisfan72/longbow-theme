@@ -10,12 +10,27 @@
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer container" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'longbow' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'longbow' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( __( 'Theme: %1$s by %2$s.', 'longbow' ), 'longbow', '<a href="http://www.warriorsofcode.com" rel="designer">Warriors of Code</a>' ); ?>
-		</div><!-- .site-info -->
+	<footer id="colophon" class="site-footer container-fluid" role="contentinfo">
+		<div id="footer_widget_area" class="site-info row">
+            <div class="footer-widgets-1 col-sm-4">
+                <?php dynamic_sidebar( 'footer-1' ); ?>
+            </div>
+
+            <div class="footer-widgets-1 col-sm-4">
+                <?php dynamic_sidebar( 'footer-2' ); ?>
+            </div>
+
+            <div class="footer-widgets-1 col-sm-4">
+                <?php dynamic_sidebar( 'footer-2' ); ?>
+            </div>
+        </div>
+
+        <div class="copyright row">
+            <div class="col-sm-12">
+                <?php printf( __( 'Copyright %1$s.', 'woc_broadsword' ), date('Y') ); ?>
+                <?php printf( __( ' Built by yours truly, %1$s.', 'woc_broadsword' ), '<a href=' . esc_url( "http://warriorsofcode.com" ) . '>the warriors</a>' ); ?>
+            </div>
+        </div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

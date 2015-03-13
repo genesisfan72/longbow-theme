@@ -31,8 +31,10 @@
 
 				<div class="col-xs-2 col-md-6 alignvertical">
 					<nav id="site-navigation" class="main-navigation" role="navigation">
-						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php _e( 'Primary Menu', 'longbow' ); ?></button>
-						<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+						<div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/menu-icon.png' ); ?>" alt="<?php echo __( 'Menu', 'longbow' ); ?>">
+                        </div>
+                        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 					</nav><!-- #site-navigation -->
 				</div>
 			</div>
