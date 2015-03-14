@@ -29,16 +29,18 @@
 					<span class="site-description alignvertical absolute hidden-xs"><?php bloginfo( 'description' ); ?></span>
 				</div><!-- .site-branding -->
 
-				<div class="col-xs-2 col-md-6 alignvertical">
-					<nav id="site-navigation" class="main-navigation" role="navigation">
-						<div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/menu-icon.png' ); ?>" alt="<?php echo __( 'Menu', 'longbow' ); ?>">
-                        </div>
-                        <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-					</nav><!-- #site-navigation -->
+				<div class="col-xs-2 col-md-6 pull-right alignvertical">
+                    <div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-3x fa-bars"></i></div>
 				</div>
 			</div>
 		</div>
+
+        <nav id="mobile-site-navigation" class="slide-menu slide-menu-right" role="navigation">
+            <?php wp_nav_menu( array(
+                'theme_location' => 'primary',
+                'menu_id' => 'primary-menu',
+                'items_wrap' => '<ul id="%1$s" class="%2$s"><li class="close-menu"><i class="fa fa-5x fa-times-circle-o"></i></li>%3$s</ul>' ) ); ?>
+        </nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

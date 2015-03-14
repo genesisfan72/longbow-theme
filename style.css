@@ -438,6 +438,28 @@ table {
     text-transform: uppercase;
 }
 
+.circle {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-right: 5px;
+}
+
+/*--------------------------------------------------------------
+3.2 Longbow Elements Effects
+--------------------------------------------------------------*/
+.opaque {
+    opacity: 1;
+}
+
+.transparent {
+    opacity: 0;
+}
+
 /*--------------------------------------------------------------
 4.0 Forms
 --------------------------------------------------------------*/
@@ -625,9 +647,54 @@ a:active {
 .main-navigation .current_page_ancestor > a {
 }
 
+.slide-menu {
+    position: fixed;
+    z-index: 2;
+    background-color: #000;
+    opacity: 0.9;
+    overflow: hidden;
+    color: #fff;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.slide-menu ul {
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+.slide-menu-right {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    right: -100%;
+}
+
+.slide-menu li {
+    display: block;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.slide-menu a {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.slide-menu .close-menu {
+    color: #fff;
+    padding: 0;
+    text-align: center;
+}
+
 /* Small menu. */
 .menu-toggle {
     display: none;
+    color: #555;
 }
 
 @media screen and (max-width: 600px) {
@@ -661,33 +728,6 @@ a:active {
 	float: right;
 	text-align: right;
 	width: 50%;
-}
-
-.slideout-menu {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 0;
-    width: 256px;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    display: none;
-}
-
-.slideout-panel {
-    position:relative;
-    z-index: 1;
-}
-
-.slideout-open,
-.slideout-open body {
-    overflow: hidden;
-}
-
-.slideout-open .slideout-menu {
-    display: block;
 }
 
 /*--------------------------------------------------------------
@@ -766,6 +806,10 @@ a:active {
 	height: 100%;
 }
 
+.resetRight {
+    right: 0;
+}
+
 /*--------------------------------------------------------------
 8.0 Clearings
 --------------------------------------------------------------*/
@@ -828,15 +872,16 @@ a:active {
 
 .entry-title {
 	font-size: 2.5em;
+    margin-bottom: 0;
 }
 
 .entry-meta {
 	font-family: "PT Serif", serif;
 	font-style: italic;
-	font-size: 1.5em;
+	font-size: 2em;
+    margin-top: -25px;
 }
 
-.byline,
 .updated:not(.published) {
 	display: none;
 }
@@ -857,7 +902,7 @@ a:active {
 	margin: 0 0 1.5em;
 }
 
-.post-excerpt {
+.container-fluid .post-excerpt {
 	bottom: 0;
 	left: 11px;
 	top: 60%;
@@ -920,7 +965,7 @@ header {
 }
 
 .site-header {
-	height: 80px;
+	height: 50px;
 }
 
 .site-title {
@@ -961,6 +1006,23 @@ header {
 .fp-post-row {
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+}
+
+.fp-post-row .post-excerpt {
+    position: absolute;
+    bottom: 0;
+    padding-left: 11px;
+    -webkit-transform: translateY(40px);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: translateY(40px);  /* IE 9 */
+    transform: translateY(40px);  /* Firefox 16+, IE 10+, Opera */
+}
+
+.fp-post-row .post-excerpt .entry-meta {
+    opacity: 0;
+}
+
+.fp-post-row .post-excerpt footer {
+    opacity: 0;
 }
 
 .products-container {

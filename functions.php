@@ -200,13 +200,13 @@ function longbow_scripts() {
 
 	wp_enqueue_style( 'longbow-bootstrap', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.min.css' );
 
+    wp_enqueue_style( 'fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
+
 	wp_enqueue_style( 'longbow-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'longbow-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	wp_enqueue_script( 'longbow-bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array(), '20130115', true );
-
-    wp_enqueue_script( 'slideout', get_template_directory_uri() . '/assets/js/slideout.min.js', array(), '20130115', true );
 
     wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array(), '20130115', true );
 
