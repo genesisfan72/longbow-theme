@@ -17,11 +17,11 @@ if ( ! isset( $content_width ) ) {
  */
 require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 
-add_action( 'tgmpa_register', 'woc_broadsword_register_required_plugins' );
+add_action( 'tgmpa_register', 'longbow_register_required_plugins' );
 /**
  * Register the required plugins for this theme.
  */
-function woc_broadsword_register_required_plugins() {
+function longbow_register_required_plugins() {
 
     $plugins = array(
         array(
@@ -31,7 +31,7 @@ function woc_broadsword_register_required_plugins() {
         )
     );
 
-    $theme_text_domain = 'woc_broadsword';
+    $theme_text_domain = 'woc_longbow';
 
     /**
      * Array of configuration settings. Uncomment and amend each line as needed.
@@ -208,6 +208,8 @@ function longbow_scripts() {
 
 	wp_enqueue_script( 'longbow-bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array(), '20130115', true );
 
+    wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/assets/js/fastclick.js', array(), '20130115', true );
+
     wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -215,6 +217,19 @@ function longbow_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'longbow_scripts' );
+
+/**
+ * Pagination styling
+ */
+add_filter('next_posts_link_attributes', 'posts_link_attributes_1');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes_2');
+
+function posts_link_attributes_1() {
+    return 'class="btn-longbow btn-next col-xs-12 pull-right"';
+}
+function posts_link_attributes_2() {
+    return 'class="btn-longbow btn-next col-xs-12 pull-left"';
+}
 
 /**
  * Implement the Custom Header feature.

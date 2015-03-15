@@ -436,6 +436,11 @@ table {
     border: 1px solid #000;
     text-align: center;
     text-transform: uppercase;
+    text-decoration: none;
+}
+
+.btn-longbow, .btn-longbow:visited {
+    color: #555;
 }
 
 .circle {
@@ -934,10 +939,6 @@ a:active {
 	transform:  scaleX(1.15) scaleY(1.15) ;
 }
 
-.bg-image-small {
-	height: 200px;
-}
-
 /*--------------------------------------------------------------
 10.2 Asides
 --------------------------------------------------------------*/
@@ -1003,11 +1004,6 @@ header {
     overflow: hidden;
 }
 
-.fp-post-row {
-    -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-
 .fp-post-row .post-excerpt {
     position: absolute;
     bottom: 0;
@@ -1023,6 +1019,24 @@ header {
 
 .fp-post-row .post-excerpt footer {
     opacity: 0;
+}
+
+.fp-post {
+    height: 200px;
+    background-color: #3085a3;
+    overflow: hidden;
+    margin-bottom: 1px;
+}
+
+.fp-post:hover {
+    opacity: 0;
+}
+
+.fp-post img {
+    height: 100%;
+    opacity: 0.7;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .products-container {
