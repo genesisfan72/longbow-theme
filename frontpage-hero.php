@@ -15,7 +15,7 @@
 ?>
 
 <?php if ( $paged == 1 ) { ?>
-    <div id="fp_hero" class="container-fluid">
+    <div id="fp_hero" class="wrap hero relative">
         <?php
             // Show the most recent post as the hero
             $args = array( 'posts_per_page' => 1 );
@@ -28,16 +28,18 @@
                 // Get the featured image for this post
                 $bg_img = longbow_featured_image( $post->ID );
         ?>
-                <div class="row hero relative">
-                    <div class="bg-image toparentheight" <?php if ( $bg_img != '' ) { ?>style="background:url(<?php echo esc_url($bg_img); ?>) 100% / cover;"<?php } ?>>
-                    </div>
-                    <?php get_template_part( 'content', 'excerpt' ); ?>
-                </div>
+        <img class="bg-image absolute" src="<?php echo esc_url($bg_img); ?>" alt="<?php echo the_title(); ?>"/>
+        <div class="container toparentheight relative">
+            <div class="row">
+                <?php get_template_part( 'content', 'excerpt' ); ?>
+            </div>
+        </div>
         <?php } ?>
     </div>
 <?php } ?>
 
 <div id="post_headlines" class="container">
+    <div class="row fp-post-row">
 	<?php
         $offset = $paged == 1 ? 1 : 0;
         $posts_per_page = get_option( 'posts_per_page' );
@@ -48,22 +50,24 @@
 			setup_postdata( $post );
 
 			// Get the featured image for this post
-			$bg_img = longbow_featured_image( $post->ID );
+			$post_img = longbow_featured_image( $post->ID );
 	?>
-			<div class="row fp-post-row">
-				<div class="col-xs-12 relative">
-                    <div class="fp-post">
-                        <img src="<?php echo esc_url( $bg_img ); ?>" alt="<?php echo esc_attr( the_title() ); ?>"/>
-					</div>
-					<?php get_template_part( 'content', 'excerpt' ); ?>
-				</div>
-			</div>
+            <div class="col-xs-12 col-sm-6 relative">
+                <div class="fp-post fp-post-image transparent">
+                    <div class="hover-overlay toparentheight"></div>
+                    <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+                        <img src="<?php echo esc_url( $post_img ); ?>" alt="<?php echo esc_attr( the_title() ); ?>" />
+                    </a>
+                    <?php get_template_part( 'content', 'excerpt' ); ?>
+                </div>
+            </div>
 	<?php
 		}
 	?>
+    </div>
 </div>
 
-<div id="fp_pagination" class="container btn-container">
+<div id="fp_pagination" class="container btn-container visible-xs-block">
 	<div class="row">
         <div class="col-xs-6">
             <?php echo get_previous_posts_link( __( 'Previous', 'longbow' ) ); ?>

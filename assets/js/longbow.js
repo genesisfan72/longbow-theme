@@ -20,6 +20,10 @@
         }
 
         var methods = {
+            showPosts: function() {
+                // show posts only when page is ready and all images loaded
+                $('.fp-post').removeClass('transparent');
+            }
         };
 
         var events = function () {
@@ -30,15 +34,12 @@
             elements.menuClose.on('click', function() {
                 elements.slideMenu.removeClass('resetRight');
             });
-
-            //$('.fp-post').on('hover', function() {
-            //    $(this).find('img').addClass('opaque');
-            //});
         };
 
         var init = function () {
             FastClick.attach(document.body);
             events();
+            methods.showPosts();
         };
 
         init();

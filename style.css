@@ -454,6 +454,10 @@ table {
     margin-right: 5px;
 }
 
+.wrap {
+    width: 100%;
+}
+
 /*--------------------------------------------------------------
 3.2 Longbow Elements Effects
 --------------------------------------------------------------*/
@@ -463,6 +467,25 @@ table {
 
 .transparent {
     opacity: 0;
+}
+
+.hover-overlay {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    -webkit-transition: all 0.35s ease-out;
+    transition: all 0.35s ease-out;
+
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
 
 /*--------------------------------------------------------------
@@ -876,15 +899,20 @@ a:active {
 }
 
 .entry-title {
-	font-size: 2.5em;
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
-.entry-meta {
+.entry-meta, .entry-footer {
 	font-family: "PT Serif", serif;
 	font-style: italic;
-	font-size: 2em;
-    margin-top: -25px;
+    font-size: 2em;
+    line-height: 2em;
+}
+
+.fp-post .entry-meta, .fp-post .entry-footer {
+    opacity: 0;
+    -webkit-transition: all 0.35s ease-out;
+    transition: all 0.35s ease-out;
 }
 
 .updated:not(.published) {
@@ -907,11 +935,14 @@ a:active {
 	margin: 0 0 1.5em;
 }
 
-.container-fluid .post-excerpt {
+.post-excerpt {
 	bottom: 0;
-	left: 11px;
-	top: 60%;
-	-webkit-transform: translateY(-60%);
+    padding: 0 11px;
+}
+
+.hero .post-excerpt {
+    top: 60%;
+    -webkit-transform: translateY(-60%);
     -ms-transform: translateY(-60%);
     transform: translateY(-60%);
 }
@@ -937,7 +968,15 @@ a:active {
 	-o-transform:  scaleX(1.15) scaleY(1.15) ;
 	-ms-transform:  scaleX(1.15) scaleY(1.15) ;
 	transform:  scaleX(1.15) scaleY(1.15) ;
+    height: 100%;
+    max-width: none;
+    max-height: none;
 }
+
+.entry-footer {
+    font-size: 1.8em;
+}
+
 
 /*--------------------------------------------------------------
 10.2 Asides
@@ -1004,39 +1043,48 @@ header {
     overflow: hidden;
 }
 
-.fp-post-row .post-excerpt {
+.fp-post .post-excerpt {
     position: absolute;
     bottom: 0;
     padding-left: 11px;
-    -webkit-transform: translateY(40px);  /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: translateY(40px);  /* IE 9 */
-    transform: translateY(40px);  /* Firefox 16+, IE 10+, Opera */
+    -webkit-transform: translateY(40%);
+    -ms-transform: translateY(40%);
+    transform: translateY(40%);
+    -webkit-transition: all 0.35s ease-out;
+    transition: all 0.35s ease-out;
 }
 
-.fp-post-row .post-excerpt .entry-meta {
+.fp-post .post-excerpt .entry-meta, .fp-post .post-excerpt footer {
     opacity: 0;
+    font-size: 2.2em;
 }
 
-.fp-post-row .post-excerpt footer {
-    opacity: 0;
+.fp-post .post-excerpt footer {
+    font-size: 2em;
 }
 
 .fp-post {
+    position: relative;
     height: 200px;
-    background-color: #3085a3;
+    background-color: #000;
     overflow: hidden;
     margin-bottom: 1px;
+    -webkit-transition: all 0.35s ease-out;
+    transition: all 0.35s ease-out;
 }
 
-.fp-post:hover {
-    opacity: 0;
+.fp-post-image {
+    overflow: hidden;
 }
 
 .fp-post img {
-    height: 100%;
-    opacity: 0.7;
-    -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    width: calc(100% + 50px);
+    max-width: none;
+    -webkit-transform: translateX(-40px);
+    -ms-transform: translateY(-40px);
+    transform: translateX(-40px);
+    -webkit-transition: all 0.35s ease-out;
+    transition: all 0.35s ease-out;
 }
 
 .products-container {
@@ -1228,3 +1276,77 @@ object {
   }
 }
 
+
+/*--------------------------------------------------------------
+14.0 Media Queries
+--------------------------------------------------------------*/
+@media (min-width: 768px) {
+    .site-header {
+        height: 80px;
+    }
+
+    .hero {
+        height: 650px;
+    }
+
+    .circle {
+        width: 45px;
+        height: 45px;
+        margin-top: 5px;
+    }
+
+    .fp-post .circle {
+        width: 25px;
+        height: 25px;
+    }
+
+    .entry-title {
+        font-size: 5.2em;
+    }
+
+    .entry-meta, .entry-footer {
+        font-size: 3.2em;
+    }
+
+    .entry-footer {
+        font-size: 2.8em;
+    }
+
+    .bg-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .fp-post {
+        height: 300px;
+    }
+
+    .fp-post .entry-title {
+        font-size: 3em;
+    }
+
+    .fp-post-image {
+        margin: 22px 2px 0 2px;
+    }
+
+    .fp-post:hover img {
+        -webkit-transform: translateX(-10px);
+        -ms-transform: translateX(-10px);
+        transform: translateX(-10px);
+    }
+
+    .fp-post:hover .post-excerpt {
+        bottom: 50%;
+        -webkit-transform: translateY(60%);
+        -ms-transform: translateY(60%);
+        transform: translateY(60%);
+    }
+
+    .fp-post:hover .entry-meta, .fp-post:hover .entry-footer {
+        opacity: 1;
+    }
+
+    .fp-post:hover .hover-overlay {
+        opacity: 0.6;
+    }
+}
