@@ -118,9 +118,10 @@ function longbow_setup() {
 	 */
 	//add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
+	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'longbow' ),
+        'secondary' => __( 'Secondary Menu', 'longbow' ),
 	) );
 
 	/*
@@ -167,7 +168,7 @@ function longbow_widgets_init() {
     register_sidebar(array(
         'name'          => __( 'Footer 1', 'longbow' ),
         'id'            => 'footer-1',
-        'before_widget' => '<aside class="widget well %2$s" id="%1$s">',
+        'before_widget' => '<aside class="widget %2$s" id="%1$s">',
         'after_widget'  => '</aside>',
         'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>',
@@ -176,7 +177,7 @@ function longbow_widgets_init() {
     register_sidebar(array(
         'name'          => __( 'Footer 2', 'longbow' ),
         'id'            => 'footer-2',
-        'before_widget' => '<aside class="widget well %2$s" id="%1$s">',
+        'before_widget' => '<aside class="widget %2$s" id="%1$s">',
         'after_widget'  => '</aside>',
         'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>',
@@ -185,7 +186,7 @@ function longbow_widgets_init() {
     register_sidebar(array(
         'name'          => __( 'Footer 3', 'longbow' ),
         'id'            => 'footer-3',
-        'before_widget' => '<aside class="widget well %2$s" id="%1$s">',
+        'before_widget' => '<aside class="widget %2$s" id="%1$s">',
         'after_widget'  => '</aside>',
         'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>',
@@ -225,10 +226,10 @@ add_filter('next_posts_link_attributes', 'posts_link_attributes_1');
 add_filter('previous_posts_link_attributes', 'posts_link_attributes_2');
 
 function posts_link_attributes_1() {
-    return 'class="btn-longbow btn-next col-xs-12 pull-right"';
+    return 'class="btn-longbow btn-next aligncenter"';
 }
 function posts_link_attributes_2() {
-    return 'class="btn-longbow btn-next col-xs-12 pull-left"';
+    return 'class="btn-longbow btn-next aligncenter"';
 }
 
 /**

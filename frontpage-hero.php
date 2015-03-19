@@ -67,7 +67,7 @@
     </div>
 </div>
 
-<div id="fp_pagination" class="container btn-container visible-xs-block">
+<div id="fp_mobile_pagination" class="container btn-container hidden-lg">
 	<div class="row">
         <div class="col-xs-6">
             <?php echo get_previous_posts_link( __( 'Previous', 'longbow' ) ); ?>
@@ -78,12 +78,25 @@
 	</div>
 </div>
 
-<div id="products" class="container-fluid products-container">
+<div id="fp_pagination" class="wrap pagination-container visible-lg-block relative">
+    <div class="container alignvertical">
+        <div class="row">
+            <div class="col-xs-6 centertext">
+                <?php echo get_previous_posts_link( __( '< Previous', 'longbow' ) ); ?>
+            </div>
+            <div class="col-xs-6 centertext">
+                <?php echo get_next_posts_link( __( 'Next >', 'longbow' ) ); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="products" class="wrap products-container">
     <ul>
-        <li class="product-square"></li>
-        <li class="product-square"></li>
-        <li class="product-square"></li>
-        <li class="product-square"></li>
+        <li class="product-square"><img src="http://lorempixel.com/400/400/fashion" alt=""/></li>
+        <li class="product-square"><img src="http://lorempixel.com/400/400/sports" alt=""/></li>
+        <li class="product-square"><img src="http://lorempixel.com/400/400/people" alt=""/></li>
+        <li class="product-square"><img src="http://lorempixel.com/400/400/city" alt=""/></li>
     </ul>
 
 </div>
