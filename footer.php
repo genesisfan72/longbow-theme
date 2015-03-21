@@ -50,21 +50,27 @@
             </div>
         </nav>
 
-        <div class="social row">
-            <div class="col-sm-12 text-center">
-                <a href=""><i class="fa fa-4x fa-facebook"></i></a>
-                <a href=""><i class="fa fa-4x fa-twitter"></i></a>
-                <a href=""><i class="fa fa-4x fa-instagram"></i></a>
-                <a href=""><i class="fa fa-4x fa-pinterest"></i></a>
-                <a href=""><i class="fa fa-4x fa-youtube"></i></a>
-                <a href=""><i class="fa fa-4x fa-google-plus"></i></a>
+        <div class="social container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <a href=""><i class="fa fa-4x fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-4x fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-4x fa-instagram"></i></a>
+                    <a href=""><i class="fa fa-4x fa-pinterest"></i></a>
+                    <a href=""><i class="fa fa-4x fa-youtube"></i></a>
+                    <a href=""><i class="fa fa-4x fa-google-plus"></i></a>
+                </div>
             </div>
         </div>
 
-        <div class="copyright row">
-            <div class="col-sm-12 alignvertical">
-                <?php printf( __( 'Copyright %1$s.', 'woc_broadsword' ), date('Y') ); ?>
-                <?php printf( __( ' Built by yours truly, %1$s.', 'woc_broadsword' ), '<a href=' . esc_url( "http://warriorsofcode.com" ) . '>the warriors</a>' ); ?>
+        <div class="copyright wrap">
+            <div class="container alignvertical">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <?php printf( __( 'Copyright %1$s.', 'woc_broadsword' ), date('Y') ); ?>
+                        <?php printf( __( ' Built by yours truly, %1$s.', 'woc_broadsword' ), '<a href=' . esc_url( "http://warriorsofcode.com" ) . '>the warriors</a>' ); ?>
+                    </div>
+                </div>
             </div>
         </div>
 	</footer><!-- #colophon -->

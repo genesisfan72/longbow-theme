@@ -97,6 +97,8 @@
         <li class="product-square"><img src="http://lorempixel.com/400/400/sports" alt=""/></li>
         <li class="product-square"><img src="http://lorempixel.com/400/400/people" alt=""/></li>
         <li class="product-square"><img src="http://lorempixel.com/400/400/city" alt=""/></li>
+        <li class="product-square"><img src="http://lorempixel.com/400/400/abstract" alt=""/></li>
+        <li class="product-square"><img src="http://lorempixel.com/400/400/animals" alt=""/></li>
     </ul>
 
 </div>

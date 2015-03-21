@@ -82,6 +82,17 @@ if ( ! function_exists( 'longbow_featured_image' ) ) {
 	}
 }
 
+/*
+ * Enable WooCommerce support
+ */
+if (! function_exists ('woocommerce_support' ) ) {
+    add_action('after_setup_theme', 'woocommerce_support');
+    function woocommerce_support()
+    {
+        add_theme_support('woocommerce');
+    }
+}
+
 if ( ! function_exists( 'longbow_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -256,3 +267,13 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load Google fonts
+ */
+function load_fonts() {
+//    $protocol = is_ssl() ? 'https' : 'http';
+//    wp_enqueue_style( "PT Serif", "$protocol://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic" );
+//    wp_enqueue_style( "Open Sans", "$protocol://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,500,600,700,700italic,800,900" );
+}
+add_action('wp_print_styles', 'load_fonts');

@@ -104,7 +104,7 @@ abbr[title] {
 
 b,
 strong {
-	font-weight: bold;
+	font-weight: 700;
 }
 
 dfn {
@@ -249,7 +249,7 @@ textarea {
 }
 
 optgroup {
-	font-weight: bold;
+	font-weight: 700;
 }
 
 table {
@@ -288,7 +288,7 @@ h6 {
 h1 {
 	font-family: "Open Sans", sans-serif;
 	font-size: 3em;
-	font-weight: bold;
+	font-weight: 700;
 	text-transform: uppercase;
 	text-decoration: none;
 	color: #fff;
@@ -406,7 +406,7 @@ li > ol {
 }
 
 dt {
-	font-weight: bold;
+	font-weight: 700;
 }
 
 dd {
@@ -491,6 +491,13 @@ table {
     background: linear-gradient(to top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000',GradientType=0 );
 
+}
+
+.side-by-side {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /*--------------------------------------------------------------
@@ -603,7 +610,7 @@ a:active {
 	color: #cbcbcb;
 	font-family: "Open Sans", sans-serif;
 	font-size: 1.6em;
-	font-weight: bold;
+	font-weight: 700;
 	text-transform: uppercase;
     color: #555;
 }
@@ -647,7 +654,7 @@ a:active {
 	display: block;
 	text-decoration: none;
 	color: #555;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 .main-navigation a:hover {
@@ -816,7 +823,7 @@ a:active {
     text-transform: uppercase;
     font-family: "Open Sans", sans-serif;
     font-size: 1.6em;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .mobile-footer-nav {
@@ -856,7 +863,7 @@ a:active {
 	display: block;
 	font-size: 14px;
 	font-size: 0.875rem;
-	font-weight: bold;
+	font-weight: 700;
 	height: auto;
 	left: 5px;
 	line-height: normal;
@@ -967,7 +974,7 @@ a:active {
     color: #333;
     text-transform: uppercase;
     font-family: "Open Sans", sans-serif;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .widget-title + * {
@@ -1008,11 +1015,21 @@ a:active {
 	margin-bottom: 0;
 }
 
+.blog2 .entry-title {
+    color: #333;
+    font-size: 3em;
+}
+
 .entry-meta, .entry-footer {
 	font-family: "PT Serif", serif;
 	font-style: italic;
     font-size: 2em;
     line-height: 2em;
+}
+
+.blog2 .entry-meta, .blog2 .entry-footer {
+    font-size: 1.8em;
+    color: #878787;
 }
 
 .fp-post .entry-meta, .fp-post .entry-footer {
@@ -1099,7 +1116,7 @@ a:active {
     height: 50px;
     text-align: center;
     font-size: 1.2em;
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
     color: #fff;
 }
@@ -1153,6 +1170,12 @@ header {
 	font-size: 1.6em;
 	color: #878787;
 	padding: 0 15px;
+}
+
+.fa-search, .fa-shopping-cart {
+    -webkit-transform: translateY(-80%);
+    -ms-transform: translateY(-80%);
+    transform: translateY(-80%);
 }
 
 /*--------------------------------------------------------------
@@ -1235,10 +1258,16 @@ header {
     display: inline-block;
     background: #ccc;
     overflow: hidden;
+    margin-right: -4px;
 }
 
 .product-square img {
     vertical-align: inherit;
+}
+
+.side-by-side .fp-post {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /*--------------------------------------------------------------

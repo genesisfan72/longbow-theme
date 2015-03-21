@@ -10,7 +10,8 @@
 <?php get_header(); ?>
 
 	<?php
-		$fp_layout = get_theme_mod( 'fp_layout', 'hero' );
+		//$fp_layout = get_theme_mod( 'fp_layout', 'hero' );
+        $fp_layout = get_theme_mod( 'fp_layout', 'sidebar' );
 
 		get_template_part( 'frontpage', $fp_layout );
 	?>

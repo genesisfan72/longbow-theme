@@ -38,7 +38,7 @@
                         'theme_location' => 'primary',
                         'menu_id' => 'primary-menu',
                         'container_class' => 'toparentheight',
-                        'items_wrap' => '<ul id="%1$s" class="%2$s toparentheight">%3$s<li><i class="fa fa-search"></i></li><li><i class="fa fa-shopping-cart"></i></li></ul>' ) ); ?>
+                        'items_wrap' => '<ul id="%1$s" class="%2$s toparentheight">%3$s<li><i class="fa fa-search alignvertical"></i></li><li><i class="fa fa-shopping-cart alignvertical"></i></li></ul>' ) ); ?>
                 </nav><!-- #site-navigation -->
 			</div>
 		</div>
