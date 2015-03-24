@@ -432,6 +432,7 @@ table {
 }
 
 .btn-longbow {
+    color: #878787;
     padding: 10px 5px;
     border: 1px solid #000;
     text-align: center;
@@ -439,12 +440,12 @@ table {
     text-decoration: none;
 }
 
-.btn-longbow:hover {
-    text-decoration: none;
+.btn-longbow:visited {
+    color: #878787;
 }
 
-.btn-longbow, .btn-longbow:visited {
-    color: #555;
+.btn-longbow:hover {
+    text-decoration: none;
 }
 
 .circle {
@@ -586,6 +587,10 @@ a {
 
 a:visited {
 	color: #fff;
+}
+
+.blog2 a, .blog2 a:visited {
+    color: #878787;
 }
 
 a:hover,
@@ -840,6 +845,10 @@ a:active {
     margin-top: 40px;
 }
 
+.blog2 .pagination-container {
+    background: transparent;
+}
+
 /*--------------------------------------------------------------
 6.0 Accessibility
 --------------------------------------------------------------*/
@@ -908,6 +917,14 @@ a:active {
     text-align: center;
 }
 
+.lefttext {
+    text-align: left;
+}
+
+.righttext {
+    text-align: right;
+}
+
 .relative {
 	position: relative;
 }
@@ -957,8 +974,10 @@ a:active {
 --------------------------------------------------------------*/
 .widget {
 	margin: 0 0 1.5em;
+    padding-bottom: 20px;
     color: #555;
     font-family: "PT Serif", serif;
+    border-bottom: 1px solid #ededed;
 }
 
 .widget a {
@@ -978,6 +997,10 @@ a:active {
 }
 
 .widget-title + * {
+    font-size: 1.6em;
+}
+
+.site-footer .widget-title + * {
     opacity: 0.7;
     font-size: 1.8em;
 }
@@ -1020,22 +1043,40 @@ a:active {
     font-size: 3em;
 }
 
-.entry-meta, .entry-footer {
+.entry-meta, .entry-footer, .blog2 .byline-container {
 	font-family: "PT Serif", serif;
 	font-style: italic;
     font-size: 2em;
     line-height: 2em;
 }
 
-.blog2 .entry-meta, .blog2 .entry-footer {
+.blog2 .entry-meta, .blog2 .byline-container {
     font-size: 1.8em;
     color: #878787;
 }
 
-.fp-post .entry-meta, .fp-post .entry-footer {
+.blog2 .byline-container {
+    color: #fff;
+    z-index: 3;
+}
+
+.blog2 .byline-container a {
+    color: #fff;
+}
+
+.fp-post .entry-meta, .fp-post .entry-footer, .blog2 .byline-container {
     opacity: 0;
     -webkit-transition: all 0.35s ease-out;
     transition: all 0.35s ease-out;
+}
+
+.entry-excerpt {
+    color: #555;
+    font-family: "PT Serif", serif;
+    font-size: 2em;
+    font-weight: 100;
+    padding: 10px 0;
+    border-bottom: 1px solid #ededed;
 }
 
 .updated:not(.published) {
@@ -1100,6 +1141,10 @@ a:active {
 
 .entry-footer {
     font-size: 1.8em;
+}
+
+.blog2 .byline-container {
+    bottom: 0;
 }
 
 .social {
@@ -1192,6 +1237,14 @@ header {
     overflow: hidden;
 }
 
+.blog2.headlines-container {
+    padding-top: 60px;
+}
+
+.blog2.fp-sidebar {
+    padding-top: 10px;
+}
+
 .fp-post .post-excerpt {
     position: absolute;
     bottom: 0;
@@ -1203,9 +1256,22 @@ header {
     transition: all 0.35s ease-out;
 }
 
+.blog2 .fp-post .post-excerpt {
+    position: relative;
+    top: 0;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+
 .fp-post .post-excerpt .entry-meta, .fp-post .post-excerpt footer {
     opacity: 0;
     font-size: 2.2em;
+}
+
+.blog2 .fp-post .post-excerpt .entry-meta {
+    opacity: 1;
+    font-size: 1.8em;
 }
 
 .fp-post .post-excerpt footer {
@@ -1223,8 +1289,18 @@ header {
     transition: all 0.35s ease-out;
 }
 
+.blog2 .fp-post {
+    height: auto;
+    background-color: transparent;
+}
+
 .fp-post-image {
     overflow: hidden;
+}
+
+.blog2 .fp-post-image {
+    max-height: 330px;
+    z-index: 2;
 }
 
 .fp-post img {
@@ -1235,6 +1311,10 @@ header {
     transform: translateX(-40px);
     -webkit-transition: all 0.35s ease-out;
     transition: all 0.35s ease-out;
+}
+
+.blog2 .fp-post img {
+    width: calc(100% + 50px);
 }
 
 .products-container {
@@ -1450,6 +1530,10 @@ object {
         height: 650px;
     }
 
+    .blog2 .fp-post .post-excerpt {
+        padding-left: 0;
+    }
+
     .circle {
         width: 45px;
         height: 45px;
@@ -1469,6 +1553,10 @@ object {
         font-size: 3.2em;
     }
 
+    .entry-excerpt {
+        padding: 40px;
+    }
+
     .entry-footer {
         font-size: 2.8em;
     }
@@ -1486,6 +1574,10 @@ object {
         padding-left: 4em;
     }
 
+    .blog2 .byline-container {
+        padding-left: 2em;
+    }
+
     .fp-post .entry-title {
         font-size: 3em;
     }
@@ -1493,8 +1585,24 @@ object {
     .fp-post-image {
         margin: 22px 2px 0 2px;
     }
+    
+    .blog2 .fp-post-image a {
+        display: inline-block;
+    }
 
     .fp-post:hover img {
+        -webkit-transform: translateX(-10px);
+        -ms-transform: translateX(-10px);
+        transform: translateX(-10px);
+    }
+
+    .blog2 .fp-post:hover img {
+        -webkit-transform: translateX(-40px);;
+        -ms-transform: translateX(-40px);;
+        transform: translateX(-40px);;
+    }
+
+    .blog2 .fp-post-image:hover img {
         -webkit-transform: translateX(-10px);
         -ms-transform: translateX(-10px);
         transform: translateX(-10px);
@@ -1507,22 +1615,51 @@ object {
         transform: translateY(70%);
     }
 
+    .blog2 .fp-post:hover .post-excerpt {
+        bottom: 0;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+
     .fp-post:hover .entry-meta, .fp-post:hover .entry-footer {
         opacity: 1;
+    }
+
+    .blog2 .fp-post:hover .byline-container {
+        opacity: 0;
     }
 
     .fp-post:hover .hover-overlay {
         opacity: 0.6;
     }
 
+    .blog2 .fp-post:hover .hover-overlay {
+        opacity: 0;
+    }
+
+    .blog2 .fp-post-image:hover .hover-overlay {
+        opacity: 0.6;
+    }
+
+    .blog2 .fp-post-image:hover .byline-container {
+        opacity: 1;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
     .btn-longbow {
-        color: #878787;
         border: none;
         font-size: 3em;
         text-transform: capitalize;
         font-family: "PT Serif", serif;
         font-style: italic;
         display: inline;
+    }
+
+    .blog2 .btn-longbow {
+        font-size: 2em;
     }
 
     .product-square {

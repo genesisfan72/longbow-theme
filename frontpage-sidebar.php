@@ -41,19 +41,19 @@
     </div>
 <?php } ?>
 
-<div class="container">
+<div id="post_headlines" class="blog2 headlines-container container">
+
     <div class="row">
-        <div class="col-md-9">
-            <div class="row fp-post-row">
+        <div class="col-xs-12 col-sm-8">
+            <?php get_template_part( 'content', 'excerpt-blog2' ); ?>
 
-                <?php get_template_part( 'content', 'excerpt-blog2' ); ?>
-
-                <div class="row">
-                    <div id="fp_pagination" class="pagination-container visible-lg-block relative">
-                        <div class="col-xs-6 centertext alignvertical">
+            <div class="row blog2">
+                <div id="fp_pagination" class="pagination-container visible-lg-block relative">
+                    <div class="col-xs-12">
+                        <div class="col-xs-6 lefttext alignvertical">
                             <?php echo get_previous_posts_link( __( '< Previous', 'longbow' ) ); ?>
                         </div>
-                        <div class="col-xs-6 centertext alignvertical">
+                        <div class="col-xs-6 righttext alignvertical">
                             <?php echo get_next_posts_link( __( 'Next >', 'longbow' ) ); ?>
                         </div>
                     </div>
@@ -61,7 +61,8 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+
+        <div class="col-xs-12 col-sm-4 blog2 fp-sidebar">
             <?php get_sidebar(); ?>
         </div>
     </div>

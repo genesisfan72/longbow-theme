@@ -16,7 +16,9 @@
 	</header><!-- .entry-header -->
 
 	<footer class="entry-footer">
-		<?php longbow_entry_footer(); ?>
+        <?php if ( 'post' == get_post_type() ) :
+		    longbow_entry_footer();
+        endif; ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 
