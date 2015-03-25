@@ -941,6 +941,10 @@ a:active {
     right: 0;
 }
 
+.no-float {
+    float: none;
+}
+
 /*--------------------------------------------------------------
 8.0 Clearings
 --------------------------------------------------------------*/
@@ -1583,7 +1587,7 @@ object {
     }
 
     .fp-post-image {
-        margin: 22px 2px 0 2px;
+        /*margin: 22px 2px 0 2px;*/
     }
     
     .blog2 .fp-post-image a {

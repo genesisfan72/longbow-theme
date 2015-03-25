@@ -41,7 +41,7 @@ foreach ( $fp_posts as $post ) {
                     </div>
                 </div>
 
-                <div class="entry-excerpt">
+                <div class="entry-excerpt hidden-xs">
                     <?php the_excerpt(); ?>
                 </div>
             </article><!-- #post-## -->

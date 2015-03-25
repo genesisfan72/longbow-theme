@@ -70,7 +70,7 @@ function longbow_register_required_plugins() {
  * Find and return the url for the featured image for a post
  */
 if ( ! function_exists( 'longbow_featured_image' ) ) {
-	function longbow_featured_image($post_id) {
+	function longbow_featured_image( $post_id ) {
 		$thumbnail = get_post_thumbnail_id( $post_id );
 	    $bg_img = '';
 	    if ($thumbnail != '') {
@@ -82,7 +82,49 @@ if ( ! function_exists( 'longbow_featured_image' ) ) {
 	}
 }
 
-/*
+/**
+ * Determine whether or not to show the hero area on the front page
+ */
+if ( ! function_exists( 'longbow_show_hero' ) ) {
+    function longbow_show_hero() {
+        $show_hero = FALSE;
+        $fp_layout = get_theme_mod( 'fp_layout', 'blog4' );
+
+        if ( isset( $_GET[ 'fp_layout' ] ) ) {
+            $fp_layout = $_GET[ 'fp_layout' ];
+        }
+
+        $allowed_layouts = array( 'blog1', 'blog4' );
+        if ( in_array( $fp_layout, $allowed_layouts ) ) {
+            $show_hero = TRUE;
+        }
+
+        return $show_hero;
+    }
+}
+
+/**
+ * Determine whether or not to show the post wrap area on the front page
+ */
+if ( ! function_exists( 'longbow_show_post_wrap' ) ) {
+    function longbow_show_post_wrap() {
+        $show_wrap = FALSE;
+        $fp_layout = get_theme_mod( 'fp_layout', 'blog4' );
+
+        if ( isset( $_GET[ 'fp_layout' ] ) ) {
+            $fp_layout = $_GET[ 'fp_layout' ];
+        }
+
+        $allowed_layouts = array( 'blog2', 'blog3', 'blog4' );
+        if ( in_array( $fp_layout, $allowed_layouts ) ) {
+            $show_wrap = TRUE;
+        }
+
+        return $show_wrap;
+    }
+}
+
+/**
  * Enable WooCommerce support
  */
 if (! function_exists ('woocommerce_support' ) ) {
