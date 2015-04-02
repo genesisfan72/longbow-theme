@@ -455,7 +455,7 @@ table {
     background-color: #fff;
     width: 30px;
     height: 30px;
-    float: left;
+    display: inline-block;
     margin-right: 5px;
 }
 
@@ -1117,6 +1117,15 @@ a:active {
     transform: translateY(-60%);
 }
 
+.hero .post-excerpt.variant {
+    top: 60%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -60%);
+    -ms-transform: translate(-50%, -60%);
+    transform: translate(-50%, -60%);
+    text-align: center;
+}
+
 .bg-image {
 	animation: autoScale linear 7s;
 	animation-iteration-count: 1;
@@ -1541,12 +1550,13 @@ object {
     .circle {
         width: 45px;
         height: 45px;
-        margin-top: 5px;
+        margin-bottom: -12px
     }
 
     .fp-post .circle {
         width: 25px;
         height: 25px;
+        margin-bottom: -5px
     }
 
     .entry-title {

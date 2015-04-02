@@ -88,13 +88,13 @@ if ( ! function_exists( 'longbow_featured_image' ) ) {
 if ( ! function_exists( 'longbow_show_hero' ) ) {
     function longbow_show_hero() {
         $show_hero = FALSE;
-        $fp_layout = get_theme_mod( 'fp_layout', 'blog4' );
+        $fp_layout = get_theme_mod( 'fp_layout', 'blog5' );
 
         if ( isset( $_GET[ 'fp_layout' ] ) ) {
             $fp_layout = $_GET[ 'fp_layout' ];
         }
 
-        $allowed_layouts = array( 'blog1', 'blog4' );
+        $allowed_layouts = array( 'blog1', 'blog4', 'blog5' );
         if ( in_array( $fp_layout, $allowed_layouts ) ) {
             $show_hero = TRUE;
         }
@@ -115,12 +115,54 @@ if ( ! function_exists( 'longbow_show_post_wrap' ) ) {
             $fp_layout = $_GET[ 'fp_layout' ];
         }
 
-        $allowed_layouts = array( 'blog2', 'blog3', 'blog4' );
+        $allowed_layouts = array( 'blog2', 'blog3', 'blog4', 'blog5' );
         if ( in_array( $fp_layout, $allowed_layouts ) ) {
             $show_wrap = TRUE;
         }
 
         return $show_wrap;
+    }
+}
+
+/**
+ * Determine whether or not to show the secondary post wrap area on the front page
+ */
+if ( ! function_exists( 'longbow_show_secondary_post_wrap' ) ) {
+    function longbow_show_secondary_post_wrap() {
+        $show_wrap = FALSE;
+        $fp_layout = get_theme_mod( 'fp_layout', 'blog5' );
+
+        if ( isset( $_GET[ 'fp_layout' ] ) ) {
+            $fp_layout = $_GET[ 'fp_layout' ];
+        }
+
+        $allowed_layouts = array( 'blog5' );
+        if ( in_array( $fp_layout, $allowed_layouts ) ) {
+            $show_wrap = TRUE;
+        }
+
+        return $show_wrap;
+    }
+}
+
+/**
+ * Determine whether or not to show the sidekick area on the front page
+ */
+if ( ! function_exists( 'longbow_show_sidekick' ) ) {
+    function longbow_show_sidekick() {
+        $show_sidekick = FALSE;
+        $fp_layout = get_theme_mod( 'fp_layout', 'blog5' );
+
+        if ( isset( $_GET[ 'fp_layout' ] ) ) {
+            $fp_layout = $_GET[ 'fp_layout' ];
+        }
+
+        $allowed_layouts = array( 'blog5' );
+        if ( in_array( $fp_layout, $allowed_layouts ) ) {
+            $show_sidekick = TRUE;
+        }
+
+        return $show_sidekick;
     }
 }
 

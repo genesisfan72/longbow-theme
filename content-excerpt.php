@@ -4,7 +4,19 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'absolute', 'post-excerpt', 'col-xs-12', 'col-sm-8' ) ); ?>>
+<?php
+$layout = get_theme_mod( 'fp_layout', 'blog5' );
+
+if ( isset( $_GET[ 'fp_layout' ] ) ) {
+    $layout = $_GET[ 'fp_layout' ];
+}
+
+$post_class = array ( 'absolute', 'post-excerpt', 'col-xs-12', 'col-sm-8' );
+if ( $layout === 'blog5' ) {
+    array_push ( $post_class, 'variant' );
+}
+?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ) ?>
 

@@ -23,6 +23,23 @@
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="container toparentheight">
+            <?php if ( get_theme_mod( 'extra_menu', true ) ) { ?>
+            <div class="row">
+                <div class="site-branding hidden-xs hidden-sm col-md-4 alignvertical">
+                    Telephone:
+                </div>
+                <div class="site-branding hidden-xs hidden-sm col-md-8 alignvertical">
+                    <div class="pull-right">
+                        <?php wp_nav_menu( array(
+                            'theme_location' => 'primary',
+                            'menu_id' => 'primary-menu',
+                            'container_class' => 'toparentheight',
+                            'items_wrap' => '<ul id="%1$s" class="%2$s toparentheight">%3$s</ul>' ) ); ?>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+
 			<div class="row toparentheight">
 				<div class="site-branding col-xs-9 col-md-4 alignvertical">
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
