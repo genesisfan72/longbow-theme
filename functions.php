@@ -109,7 +109,7 @@ if ( ! function_exists( 'longbow_show_hero' ) ) {
 if ( ! function_exists( 'longbow_show_post_wrap' ) ) {
     function longbow_show_post_wrap() {
         $show_wrap = FALSE;
-        $fp_layout = get_theme_mod( 'fp_layout', 'blog4' );
+        $fp_layout = get_theme_mod( 'fp_layout', 'blog1' );
 
         if ( isset( $_GET[ 'fp_layout' ] ) ) {
             $fp_layout = $_GET[ 'fp_layout' ];
@@ -130,7 +130,7 @@ if ( ! function_exists( 'longbow_show_post_wrap' ) ) {
 if ( ! function_exists( 'longbow_show_secondary_post_wrap' ) ) {
     function longbow_show_secondary_post_wrap() {
         $show_wrap = FALSE;
-        $fp_layout = get_theme_mod( 'fp_layout', 'blog5' );
+        $fp_layout = get_theme_mod( 'fp_layout', 'blog1' );
 
         if ( isset( $_GET[ 'fp_layout' ] ) ) {
             $fp_layout = $_GET[ 'fp_layout' ];
@@ -302,11 +302,11 @@ function longbow_scripts() {
 
 	wp_enqueue_script( 'longbow-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-	wp_enqueue_script( 'longbow-bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array(), '20130115', true );
+	wp_enqueue_script( 'longbow-bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array( 'jQuery' ), '20130115', true );
 
     wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/assets/js/fastclick.js', array(), '20130115', true );
 
-    wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array(), '20130115', true );
+    wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array( 'jQuery' ), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

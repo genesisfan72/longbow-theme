@@ -59,8 +59,8 @@
 ?>
 <?php if ( longbow_show_post_wrap() === TRUE ) { ?>
     <?php if ( $paged == 1 ) { ?>
-        <div id="fp_latest_posts" class="wrap relative">
-            <div class="fp-post-row row">
+        <div class="wrap relative post-wrap">
+            <div class="fp-post-row">
                 <?php
                 // Show up to the three most recent posts
                 $posts_to_show = $layout === 'blog5' ? 2 : 3;
@@ -96,7 +96,7 @@
 
 <?php if ( $layout === 'blog1' ) { ?>
     <div id="post_headlines" class="container">
-        <div class="row fp-post-row">
+        <div class="row blog1 fp-post-row">
             <?php
             $offset = $paged == 1 ? 1 : 0;
             $posts_per_page = get_option( 'posts_per_page' );
@@ -216,8 +216,8 @@
 ?>
 <?php if ( longbow_show_secondary_post_wrap() === TRUE ) { ?>
     <?php if ( $paged == 1 ) { ?>
-        <div id="fp_latest_posts" class="wrap relative">
-            <div class="fp-post-row row">
+        <div class="wrap relative post-wrap">
+            <div class="fp-post-row">
                 <?php
                 // Show up to the three most recent posts
                 $args = array( 'posts_per_page' => 2 );
@@ -248,10 +248,10 @@
         <div class="container alignvertical">
             <div class="row">
                 <div class="col-xs-6 centertext">
-                    <?php echo get_previous_posts_link( __( '< Previous', 'longbow' ) ); ?>
+                    <?php echo get_previous_posts_link( __( '<i class="fa fa-angle-left"></i> &nbsp;Previous', 'longbow' ) ); ?>
                 </div>
                 <div class="col-xs-6 centertext">
-                    <?php echo get_next_posts_link( __( 'Next >', 'longbow' ) ); ?>
+                    <?php echo get_next_posts_link( __( 'Next &nbsp;<i class="fa fa-angle-right"></i>', 'longbow' ) ); ?>
                 </div>
             </div>
         </div>

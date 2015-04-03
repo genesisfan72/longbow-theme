@@ -841,12 +841,15 @@ a:active {
 --------------------------------------------------------------*/
 .pagination-container {
     background: #ededed;
-    height: 130px;
-    margin-top: 40px;
+    color: rgb(135, 135, 135);
+    height: 70px;
+    margin-top: 20px;
+    border-top: 1px solid rgb(221, 221, 221);
 }
 
 .blog2 .pagination-container {
     background: transparent;
+    border-top: none;
 }
 
 /*--------------------------------------------------------------
@@ -984,6 +987,10 @@ a:active {
     border-bottom: 1px solid #ededed;
 }
 
+.site-footer .widget {
+    border-bottom: none;
+}
+
 .widget a {
     color: #555;
 }
@@ -1013,12 +1020,10 @@ a:active {
     border-bottom: 1px solid #ddd;
 }
 
-/* Make sure select elements fit in widgets. */
 .widget select {
 	max-width: 100%;
 }
 
-/* Search widget. */
 .widget_search .search-submit {
 	display: none;
 }
@@ -1066,6 +1071,10 @@ a:active {
 
 .blog2 .byline-container a {
     color: #fff;
+}
+
+.fp-post {
+    opacity: 1;
 }
 
 .fp-post .entry-meta, .fp-post .entry-footer, .blog2 .byline-container {
@@ -1243,6 +1252,14 @@ header {
 	height: 75vh;
 	background: #ccc;
 	overflow: hidden;
+}
+
+.blog1.fp-post-row {
+    padding-top: 40px;
+}
+
+.post-wrap {
+    overflow: hidden;
 }
 
 .scroll-container {
@@ -1582,6 +1599,7 @@ object {
 
     .fp-post {
         height: 300px;
+        margin-bottom: 20px;
     }
 
     .fp-post .post-excerpt {
@@ -1665,7 +1683,7 @@ object {
 
     .btn-longbow {
         border: none;
-        font-size: 3em;
+        font-size: 1.8em;
         text-transform: capitalize;
         font-family: "PT Serif", serif;
         font-style: italic;

@@ -5,20 +5,25 @@
 ?>
 
 <?php
-$layout = get_theme_mod( 'fp_layout', 'blog5' );
+$layout = get_theme_mod( 'fp_layout', 'blog1' );
 
 if ( isset( $_GET[ 'fp_layout' ] ) ) {
     $layout = $_GET[ 'fp_layout' ];
 }
 
-$post_class = array ( 'absolute', 'post-excerpt', 'col-xs-12', 'col-sm-8' );
+$post_class = array ( 'absolute', 'post-excerpt', 'col-xs-12' );
+if ( $layout === 'blog1' ) {
+    array_push( $post_class, 'col-sm-8' );
+}
 if ( $layout === 'blog5' ) {
     array_push ( $post_class, 'variant' );
 }
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ) ?>
+        <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+		    <?php the_title( '<h1 class="entry-title">', '</h1>' ) ?>
+        </a>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
 		<div class="entry-meta">

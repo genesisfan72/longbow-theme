@@ -9,65 +9,70 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-<?php wp_head(); ?>
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'longbow' ); ?></a>
+    <a class="skip-link screen-reader-text" href="#content"><?php _e('Skip to content', 'longbow'); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="container toparentheight">
-            <?php if ( get_theme_mod( 'extra_menu', true ) ) { ?>
-            <div class="row">
-                <div class="site-branding hidden-xs hidden-sm col-md-4 alignvertical">
-                    Telephone:
-                </div>
-                <div class="site-branding hidden-xs hidden-sm col-md-8 alignvertical">
-                    <div class="pull-right">
-                        <?php wp_nav_menu( array(
-                            'theme_location' => 'primary',
-                            'menu_id' => 'primary-menu',
-                            'container_class' => 'toparentheight',
-                            'items_wrap' => '<ul id="%1$s" class="%2$s toparentheight">%3$s</ul>' ) ); ?>
+    <header id="masthead" class="site-header" role="banner">
+        <div class="container toparentheight">
+            <?php if (get_theme_mod('extra_menu', false)) { ?>
+                <div class="row">
+                    <div class="site-branding hidden-xs hidden-sm col-md-4 alignvertical">
+                        Telephone:
+                    </div>
+                    <div class="site-branding hidden-xs hidden-sm col-md-8 alignvertical">
+                        <div class="pull-right">
+                            <?php wp_nav_menu(array(
+                                                  'theme_location'  => 'primary',
+                                                  'menu_id'         => 'primary-menu',
+                                                  'container_class' => 'toparentheight',
+                                                  'items_wrap'      => '<ul id="%1$s" class="%2$s toparentheight">%3$s</ul>')); ?>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php } ?>
 
-			<div class="row toparentheight">
-				<div class="site-branding col-xs-9 col-md-4 alignvertical">
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<span class="site-description alignvertical absolute hidden-xs"><?php bloginfo( 'description' ); ?></span>
-				</div><!-- .site-branding -->
+            <div class="row toparentheight">
+                <div class="site-branding col-xs-9 col-md-4 alignvertical">
+                    <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
+                    <span class="site-description alignvertical absolute hidden-xs"><?php bloginfo('description'); ?></span>
+                </div>
+                <!-- .site-branding -->
 
-				<div class=" hidden-lg col-xs-2 col-md-8 pull-right alignvertical">
+                <div class=" hidden-lg col-xs-2 col-md-8 pull-right alignvertical">
                     <div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-3x fa-bars"></i></div>
-				</div>
+                </div>
 
                 <nav class="visible-lg col-md-8 main-navigation toparentheight">
-                    <?php wp_nav_menu( array(
-                        'theme_location' => 'primary',
-                        'menu_id' => 'primary-menu',
-                        'container_class' => 'toparentheight',
-                        'items_wrap' => '<ul id="%1$s" class="%2$s toparentheight">%3$s<li><i class="fa fa-search alignvertical"></i></li><li><i class="fa fa-shopping-cart alignvertical"></i></li></ul>' ) ); ?>
-                </nav><!-- #site-navigation -->
-			</div>
-		</div>
+                    <?php wp_nav_menu(array(
+                                          'theme_location'  => 'primary',
+                                          'menu_id'         => 'primary-menu',
+                                          'menu_class'      => 'menu alignvertical',
+                                          'container_class' => 'toparentheight',
+                                          'items_wrap'      => '<ul id="%1$s" class="%2$s toparentheight">%3$s<li><i class="fa fa-search alignvertical"></i></li><li><i class="fa fa-shopping-cart alignvertical"></i></li></ul>')); ?>
+                </nav>
+                <!-- #site-navigation -->
+            </div>
+        </div>
 
         <nav>
             <div id="mobile-site-navigation" class="slide-menu slide-menu-right" role="navigation">
-                <?php wp_nav_menu( array(
-                    'theme_location' => 'primary',
-                    'menu_id' => 'primary-menu',
-                    'items_wrap' => '<ul id="%1$s" class="%2$s"><li class="close-menu"><i class="fa fa-5x fa-times-circle-o"></i></li>%3$s</ul>' ) ); ?>
+                <?php wp_nav_menu(array(
+                                      'theme_location' => 'primary',
+                                      'menu_id'        => 'primary-menu',
+                                      'items_wrap'     => '<ul id="%1$s" class="%2$s"><li class="close-menu"><i class="fa fa-5x fa-times-circle-o"></i></li>%3$s</ul>')); ?>
             </div>
-        </nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+        </nav>
+        <!-- #site-navigation -->
+    </header>
+    <!-- #masthead -->
 
-	<div id="content" class="site-content">
+    <div id="content" class="site-content">
