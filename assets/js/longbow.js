@@ -2,7 +2,7 @@
  * The main Longbow javascript file.
  */
 
-(function ($) {
+;(function ($) {
     "use strict";
 
     var WOCLongbow = function () {
@@ -20,18 +20,23 @@
         }
 
         var methods = {
-            showPosts: function() {
+            showPosts: function () {
                 // show posts only when page is ready and all images loaded
                 $('.fp-post').removeClass('transparent');
+            },
+            getSocialCounts: function () {
+                if (elements.body.hasClass('single')) {
+                    console.log('single');
+                }
             }
         };
 
         var events = function () {
-            elements.hamburger.on('click', function() {
+            elements.hamburger.on('click', function () {
                 elements.slideMenu.addClass('resetRight');
             });
 
-            elements.menuClose.on('click', function() {
+            elements.menuClose.on('click', function () {
                 elements.slideMenu.removeClass('resetRight');
             });
         };
@@ -39,12 +44,15 @@
         var init = function () {
             FastClick.attach(document.body);
             events();
+            methods.getSocialCounts();
             methods.showPosts();
         };
 
         init();
     };
 
+    $(document).ready(function() {
+        var longbow = new WOCLongbow();
+    });
 
-    var longbow = new WOCLongbow();
 })(jQuery);

@@ -306,7 +306,24 @@ i {
 }
 
 blockquote {
-	margin: 0 1.5em;
+    font-size: 1.3em;
+    color: #333;
+    font-weight: 600;
+    font-style: italic;
+    border-left: none;
+    padding: 10px 0;
+}
+
+blockquote p {
+    margin-bottom: 0.7em;
+}
+
+blockquote footer {
+    color: #555;
+}
+
+blockquote footer:before {
+    content: none;
 }
 
 address {
@@ -459,10 +476,6 @@ table {
     margin-right: 5px;
 }
 
-.wrap {
-    width: 100%;
-}
-
 /*--------------------------------------------------------------
 3.2 Longbow Elements Effects
 --------------------------------------------------------------*/
@@ -611,6 +624,18 @@ a:active {
 /*--------------------------------------------------------------
 5.2 Menus
 --------------------------------------------------------------*/
+.top-menu {
+    height: 35px;
+    border-bottom: 1px solid #878787;
+    text-transform: uppercase;
+    font-font: "Open Sans", sans-serif;
+    font-size: 1.2em;
+}
+
+.top-menu a {
+    color: #878787;
+}
+
 .main-navigation {
 	color: #cbcbcb;
 	font-family: "Open Sans", sans-serif;
@@ -620,14 +645,14 @@ a:active {
     color: #555;
 }
 
-.main-navigation ul {
+.main-navigation ul, .top-menu ul {
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
     float: right;
 }
 
-.main-navigation li {
+.main-navigation li, .top-menu li {
 	padding: 0 15px;
     display: inline-block;
 }
@@ -839,7 +864,7 @@ a:active {
 /*--------------------------------------------------------------
 5.3 Pagination
 --------------------------------------------------------------*/
-.pagination-container {
+.pagination-container, .load-more-container {
     background: #ededed;
     color: rgb(135, 135, 135);
     height: 70px;
@@ -847,9 +872,28 @@ a:active {
     border-top: 1px solid rgb(221, 221, 221);
 }
 
+.load-more-container {
+    height: 125px;
+    border-top: 0;
+    margin-top: 0;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
 .blog2 .pagination-container {
     background: transparent;
     border-top: none;
+}
+
+.load-more {
+    font-size: 3em;
+    font-family: "PT Serif", serif;
+    font-style: italic;
+    text-align: center;
+    font-weight: 300;
+}
+
+.load-more:hover {
+    cursor: pointer;
 }
 
 /*--------------------------------------------------------------
@@ -989,6 +1033,7 @@ a:active {
 
 .site-footer .widget {
     border-bottom: none;
+    margin-top: 50px;
 }
 
 .widget a {
@@ -1161,6 +1206,30 @@ a:active {
     max-height: none;
 }
 
+.social-shares {
+    height: 60px;
+    border-bottom: 1px solid #cbcbcb;
+    color: #cbcbcb;
+    font-size: 1.5em;
+    font-family: "PT Serif", serif;
+}
+
+.social-share i {
+    padding: 0 10px;
+}
+
+.site-main {
+    font-size: 2em;
+    color: #555;
+    font-family: "PT Serif", serif;
+    margin-top: 30px;
+}
+
+.site-main .entry-content > p:first-child {
+    font-size: 1.2em;
+    color: #333;
+}
+
 .entry-footer {
     font-size: 1.8em;
 }
@@ -1214,7 +1283,7 @@ header {
 	position: relative;
 }
 
-.site-header {
+.branding-nav {
 	height: 50px;
 }
 
@@ -1552,7 +1621,7 @@ object {
 14.0 Media Queries
 --------------------------------------------------------------*/
 @media (min-width: 768px) {
-    .site-header {
+    .branding-nav {
         height: 80px;
     }
 
@@ -1600,6 +1669,10 @@ object {
     .fp-post {
         height: 300px;
         margin-bottom: 20px;
+    }
+
+    .no-row-margin {
+        margin: 0px;
     }
 
     .fp-post .post-excerpt {
@@ -1706,6 +1779,11 @@ object {
     .social .fa {
         color: #cbcbcb;
         padding: 0px 15px;
+    }
+
+    .social-shares {
+        height: 120px;
+        font-size: 2.4em;
     }
 
     input[type="text"],

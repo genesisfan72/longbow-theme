@@ -17,29 +17,39 @@
     <?php wp_head(); ?>
 </head>
 
+<?php
+$layout = get_theme_mod( 'fp_layout', 'blog1' );
+
+if ( isset( $_GET[ 'fp_layout' ] ) ) {
+    $layout = $_GET[ 'fp_layout' ];
+}
+?>
+
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
     <a class="skip-link screen-reader-text" href="#content"><?php _e('Skip to content', 'longbow'); ?></a>
 
     <header id="masthead" class="site-header" role="banner">
-        <div class="container toparentheight">
-            <?php if (get_theme_mod('extra_menu', false)) { ?>
-                <div class="row">
-                    <div class="site-branding hidden-xs hidden-sm col-md-4 alignvertical">
-                        Telephone:
-                    </div>
-                    <div class="site-branding hidden-xs hidden-sm col-md-8 alignvertical">
-                        <div class="pull-right">
-                            <?php wp_nav_menu(array(
-                                                  'theme_location'  => 'primary',
-                                                  'menu_id'         => 'primary-menu',
-                                                  'container_class' => 'toparentheight',
-                                                  'items_wrap'      => '<ul id="%1$s" class="%2$s toparentheight">%3$s</ul>')); ?>
+        <?php if ( $layout === 'blog2' ) { ?>
+            <div class="wrap top-menu">
+                <div class="container toparentheight">
+                    <div class="row toparentheight">
+                        <div class="hidden-xs hidden-sm col-md-4 alignvertical">
+                            Telephone:
                         </div>
+                        <nav class="hidden-xs hidden-sm col-md-8 toparentheight">
+                            <?php wp_nav_menu(array(
+                                'theme_location'  => 'secondary',
+                                'menu_id'         => 'secondary-menu',
+                                'menu_class'      => 'menu alignvertical',
+                                'container_class' => 'toparentheight' )); ?>
+                        </nav>
                     </div>
                 </div>
-            <?php } ?>
+            </div>
+        <?php } ?>
 
+        <div class="container toparentheight branding-nav">
             <div class="row toparentheight">
                 <div class="site-branding col-xs-9 col-md-4 alignvertical">
                     <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
