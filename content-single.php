@@ -14,8 +14,4 @@
 			) );
 		?>
 	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php longbow_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

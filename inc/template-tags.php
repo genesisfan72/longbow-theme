@@ -65,6 +65,41 @@ function the_post_navigation() {
 }
 endif;
 
+if ( ! function_exists( 'longbow_posted_on_in_category' ) ) :
+    /**
+     * Prints HTML with meta information for the current post-date/time and category.
+     */
+    function longbow_posted_on_in_category($id) {
+        $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+
+        $time_string = sprintf( $time_string,
+            esc_attr( get_the_date( 'c', $id ) ),
+            esc_html( get_the_date( 'F j, Y', $id) ),
+            esc_attr( get_the_modified_date( 'c', $id ) ),
+            esc_html( get_the_modified_date( 'F j, Y', $id) )
+        );
+
+        $posted_on = sprintf( _x( '%s', 'post date', 'woc_broadsword' ), $time_string );
+
+        $categories = get_the_category($id);
+        $separator = ', ';
+        $category_output = '';
+        $byline = '';
+
+        if ($categories) {
+            foreach($categories as $category) {
+                $category_output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", "woc_broadsword" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator;
+            }
+
+            $category_output = trim($category_output, $separator);
+            $byline = sprintf(_x( 'in %s', 'post category', 'woc_broadsword' ), $category_output);
+        }
+
+        echo '<h3>' . $posted_on . ' ' . $byline . '</h3>';
+
+    }
+endif;
+
 if ( ! function_exists( 'longbow_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
@@ -258,3 +293,120 @@ function longbow_category_transient_flusher() {
 }
 add_action( 'edit_category', 'longbow_category_transient_flusher' );
 add_action( 'save_post',     'longbow_category_transient_flusher' );
+
+if ( ! function_exists( 'longbow_post_nav' ) ) :
+    /**
+     * Display navigation to next/previous post when applicable.
+     */
+    function longbow_post_nav() {
+        // Don't print empty markup if there's nowhere to navigate.
+        $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+        $next     = get_adjacent_post( false, '', false );
+
+        if ( ! $next && ! $previous ) {
+            return;
+        }
+        ?>
+        <nav class="navigation post-navigation container-fluid" role="navigation">
+            <div class="nav-links row">
+                <?php
+                $prev_post = get_previous_post();
+                $post_class = array ( 'absolute', 'post-excerpt', 'col-xs-12' );
+                $args = array( 'order' => 'ASC', 'post_type' => 'post', 'post_status' => 'publish', 'orderby' => 'post_date', 'posts_per_page' => -1 );
+                $posts_array = get_posts( $args );
+                $first_post = count( $posts_array ) > 0 ? $posts_array[0] : NULL;
+                $last_post = count( $posts_array ) > 0 ? $posts_array[count($posts_array) - 1] : NULL;
+
+                if ( empty( $prev_post ) ) {
+                    $prev_post = $last_post;
+                }
+
+                if ( has_post_thumbnail( $prev_post->ID) ) {
+                    $prev_feat_image = wp_get_attachment_url( get_post_thumbnail_id($prev_post->ID) );
+                }
+
+                $next_post = get_next_post();
+                if ( empty( $next_post ) ) {
+                    $next_post = $first_post;
+                }
+                if ( has_post_thumbnail( $next_post->ID) ) {
+                    $next_feat_image = wp_get_attachment_url( get_post_thumbnail_id($next_post->ID) );
+                }
+                ?>
+
+                <?php
+                // Check to see if we have a previous post to show
+                if ( $prev_post != "" ) {
+                    ?>
+                    <div class="footer-nav col-sm-6">
+                        <div class="fp-post fp-post-image transparent">
+                            <div class="hover-overlay toparentheight"></div>
+                            <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" rel="bookmark">
+                                <img src="<?php echo esc_url( $prev_feat_image ); ?>" alt="<?php echo esc_html( $prev_post->post_title ); ?>" />
+                            </a>
+
+                            <article id="post-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
+                                <header class="entry-header">
+                                    <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" rel="bookmark">
+                                        <h1 class="entry-title"><?php echo esc_html( $prev_post->post_title ); ?></h1>
+                                    </a>
+
+                                    <?php if ( 'post' == get_post_type() ) : ?>
+                                        <div class="entry-meta">
+                                            <?php longbow_posted_on(); ?>
+                                        </div><!-- .entry-meta -->
+                                    <?php endif; ?>
+                                </header><!-- .entry-header -->
+
+                                <footer class="entry-footer">
+                                    <?php if ( 'post' == get_post_type() ) :
+                                        longbow_entry_footer();
+                                    endif; ?>
+                                </footer><!-- .entry-footer -->
+                            </article><!-- #post-## -->
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+
+                <?php
+                // Check to see if we have a next post to show
+                if ( !empty( $next_post) ) {
+                    ?>
+                    <div class="footer-nav col-sm-6">
+                        <div class="fp-post fp-post-image transparent">
+                            <div class="hover-overlay toparentheight"></div>
+                            <a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" rel="bookmark">
+                                <img src="<?php echo esc_url( $next_feat_image ); ?>" alt="<?php echo esc_html( $next_post->post_title ); ?>" />
+                            </a>
+                            <article id="post-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
+                                <header class="entry-header">
+                                    <a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" rel="bookmark">
+                                        <h1 class="entry-title"><?php echo esc_html( $next_post->post_title ); ?></h1>
+                                    </a>
+
+                                    <?php if ( 'post' == get_post_type() ) : ?>
+                                        <div class="entry-meta">
+                                            <?php longbow_posted_on(); ?>
+                                        </div><!-- .entry-meta -->
+                                    <?php endif; ?>
+                                </header><!-- .entry-header -->
+
+                                <footer class="entry-footer">
+                                    <?php if ( 'post' == get_post_type() ) :
+                                        longbow_entry_footer();
+                                    endif; ?>
+                                </footer><!-- .entry-footer -->
+                            </article><!-- #post-## -->
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+
+            </div><!-- .nav-links -->
+        </nav><!-- .navigation -->
+    <?php
+    }
+endif;
