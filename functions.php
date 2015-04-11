@@ -371,7 +371,7 @@ function longbow_scripts()
 
     wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/assets/js/fastclick.js', array(), '20130115', true );
 
-    wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array(), '20130115', true );
+    wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array( 'jQuery' ), '20130115', true );
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
@@ -394,6 +394,99 @@ function posts_link_attributes_1()
 function posts_link_attributes_2()
 {
     return 'class="btn-longbow btn-next aligncenter"';
+}
+
+// comment form field order
+add_filter( 'comment_form_defaults', 'remove_textarea' );
+add_action( 'comment_form_top', 'add_textarea' );
+
+/**
+ * Remove any default comment textareas
+ * @param $defaults
+ * @return mixed
+ */
+function remove_textarea($defaults)
+{
+    $defaults['comment_field'] = '';
+    return $defaults;
+}
+
+/**
+ * Add our custom textarea
+ */
+function add_textarea()
+{
+    echo '<div class="form-group comment-group-comment">' .
+        '<textarea id="comment" class="form-control" name="comment" placeholder="' . __( 'Leave your comment here', 'longbow' ) . '" rows="1" aria-required="true"></textarea>' .
+        '</div>';
+}
+
+/**
+ * Custom comments layout callback
+ */
+function longbow_comment_layout($comment, $args, $depth) {
+    $GLOBALS['comment'] = $comment;
+    extract($args, EXTR_SKIP);
+
+    if ( 'div' == $args['style'] ) {
+        $tag = 'div';
+        $add_below = 'comment';
+    } else {
+        $tag = 'li';
+        $add_below = 'div-comment';
+    }
+    ?>
+
+    <<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
+
+    <?php if ( 'div' != $args['style'] ) : ?>
+        <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+    <?php endif; ?>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+        </div>
+        <div class="col-sm-10">
+            <div class="row comment-author-row">
+                <div class="comment-author vcard col-sm-6">
+                    <?php printf( __( '<cite class="fn">%s</cite>' ), get_comment_author_link() ); ?>
+                </div>
+
+                <div class="comment-meta commentmetadata col-sm-6">
+                    <div class="pull-right">
+                        <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-date">
+                            <?php
+                            printf( '%1$s', get_comment_date() ); ?></a><?php edit_comment_link( __( '(Edit)', 'longbow' ), '  ', '' );
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <?php if ( $comment->comment_approved == '0' ) : ?>
+                        <em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'longbow' ); ?></em>
+                        <br />
+                    <?php endif; ?>
+
+                    <?php comment_text(); ?>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="reply">
+                        <i class="fa fa-mail-reply">&nbsp;</i><?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <?php if ( 'div' != $args['style'] ) : ?>
+        </div>
+    <?php endif; ?>
+<?php
 }
 
 /**
