@@ -15,7 +15,7 @@ $post_class = array ( 'absolute', 'post-excerpt', 'col-xs-12' );
 if ( $layout === 'blog1' ) {
     array_push( $post_class, 'col-sm-8' );
 }
-if ( $layout === 'blog5' ) {
+if ( $layout === 'blog5' || is_single() == true ) {
     array_push ( $post_class, 'variant' );
 }
 ?>

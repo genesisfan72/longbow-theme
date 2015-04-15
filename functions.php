@@ -367,11 +367,13 @@ function longbow_scripts()
 
     wp_enqueue_script( 'longbow-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-    wp_enqueue_script( 'longbow-bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array( 'jQuery' ), '20130115', true );
+    wp_enqueue_script( 'longbow-bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20130115', true );
 
     wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/assets/js/fastclick.js', array(), '20130115', true );
 
-    wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array( 'jQuery' ), '20130115', true );
+    wp_enqueue_script( 'layzr', get_template_directory_uri() . '/assets/js/layzr.min.js', array(), '20130115', true );
+
+    wp_enqueue_script( 'longbow', get_template_directory_uri() . '/assets/js/longbow.js', array( 'jquery' ), '20130115', true );
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
@@ -488,6 +490,11 @@ function longbow_comment_layout($comment, $args, $depth) {
     <?php endif; ?>
 <?php
 }
+
+/**
+ * WooCommerce
+ */
+add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 8;' ), 20 );
 
 /**
  * Implement the Custom Header feature.

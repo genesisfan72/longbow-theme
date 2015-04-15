@@ -11,47 +11,51 @@ get_header(); ?>
 /**
  * Get the post author info and title.
  */
-$post_title = get_the_title($post->id);
+$post_title = get_the_title( $post->id );
 $author_name = get_the_author_meta( 'user_nicename', $post->post_author );
 $author_id = get_the_author_meta( 'ID', $post->post_author );
 ?>
 
-    <div id="fp_hero" class="wrap hero relative">
-        <?php
-        // Get the featured image for this post
-        $bg_img = longbow_featured_image( $post->ID );
-        ?>
-        <img class="bg-image absolute" src="<?php echo esc_url($bg_img); ?>" alt="<?php echo the_title(); ?>"/>
-        <div class="container toparentheight relative">
-            <div class="row">
-                <?php get_template_part( 'content', 'excerpt' ); ?>
-            </div>
+<div id="fp_hero" class="wrap hero relative">
+    <?php
+    // Get the featured image for this post
+    $bg_img = longbow_featured_image( $post->ID );
+    ?>
+    <img class="bg-image absolute" src="<?php echo esc_url( $bg_img ); ?>" alt="<?php echo the_title(); ?>"/>
+
+    <div class="container toparentheight relative">
+        <div class="row">
+            <?php get_template_part( 'content', 'excerpt' ); ?>
         </div>
     </div>
+</div>
 
-    <div class="top-social">
-        <?php get_template_part( 'content', 'social-row' ); ?>
-    </div>
+<div class="top-social">
+    <?php get_template_part( 'content', 'social-row' ); ?>
+</div>
 
-	<div id="primary" class="container content-area">
-		<main id="main" class="site-main" role="main">
+<div id="primary" class="container content-area">
+    <main id="main" class="site-main" role="main">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+        <?php while ( have_posts() ) : the_post(); ?>
 
             <div class="row">
-                <div class="col-xs-12 col-sm-8">
+                <div class="col-xs-12 <?php if ( get_theme_mod( 'show_single_sidebar', false ) ) { ?>col-sm-8<?php } ?>">
                     <?php get_template_part( 'content', 'single' ); ?>
                 </div>
 
-                <div class="col-xs-12 col-sm-4">
-                    <?php get_sidebar(); ?>
-                </div>
+                <?php if ( get_theme_mod( 'show_single_sidebar', false ) ) { ?>
+                    <div class="col-xs-12 col-sm-4">
+                        <?php get_sidebar(); ?>
+                    </div>
+                <?php } ?>
             </div>
 
-		<?php endwhile; // end of the loop. ?>
+        <?php endwhile; // end of the loop. ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+    </main>
+    <!-- #main -->
+</div><!-- #primary -->
 
 <?php get_template_part( 'content', 'social-row' ); ?>
 

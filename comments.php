@@ -69,7 +69,7 @@ if ( post_password_required() ) {
             wp_list_comments( array(
                                   'style'       => 'ul',
                                   'short_ping'  => true,
-                                  'avatar_size' => 70,
+                                  'avatar_size' => 90,
                                   'callback'    => 'longbow_comment_layout',
                                   'type'        => 'comment'
                               ) );

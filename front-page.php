@@ -44,7 +44,7 @@
                 // Get the featured image for this post
                 $bg_img = longbow_featured_image( $post->ID );
                 ?>
-                <img class="bg-image absolute" src="<?php echo esc_url($bg_img); ?>" alt="<?php echo the_title(); ?>"/>
+                <img class="bg-image absolute" data-layzr="<?php echo esc_url($bg_img); ?>" alt="<?php echo the_title(); ?>"/>
                 <div class="container toparentheight relative">
                     <div class="row">
                         <?php get_template_part( 'content', 'excerpt' ); ?>
@@ -84,7 +84,7 @@
                         <div class="fp-post fp-post-image transparent <?php echo $margin_bottom; ?>">
                             <div class="hover-overlay toparentheight"></div>
                             <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-                                <img src="<?php echo esc_url( $post_img ); ?>" alt="<?php echo esc_attr( the_title() ); ?>" />
+                                <img data-layzr="<?php echo esc_url($bg_img); ?>" alt="<?php echo esc_attr( the_title() ); ?>" />
                             </a>
                             <?php get_template_part( 'content', 'excerpt' ); ?>
                         </div>
@@ -122,7 +122,7 @@
                     <div class="fp-post fp-post-image transparent">
                         <div class="hover-overlay toparentheight"></div>
                         <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-                            <img src="<?php echo esc_url( $post_img ); ?>" alt="<?php echo esc_attr( the_title() ); ?>" />
+                            <img data-layzr="<?php echo esc_url($bg_img); ?>" alt="<?php echo esc_attr( the_title() ); ?>" />
                         </a>
                         <?php get_template_part( 'content', 'excerpt' ); ?>
                     </div>
@@ -210,7 +210,7 @@
                 // Get the featured image for this post
                 $bg_img = longbow_featured_image( $post->ID );
                 ?>
-                <img class="bg-image absolute" src="<?php echo esc_url($bg_img); ?>" alt="<?php echo the_title(); ?>"/>
+                <img class="bg-image absolute" data-layzr="<?php echo esc_url($bg_img); ?>" alt="<?php echo the_title(); ?>"/>
                 <div class="container toparentheight relative">
                     <div class="row">
                         <?php get_template_part( 'content', 'excerpt' ); ?>
@@ -248,7 +248,7 @@
                         <div class="fp-post fp-post-image transparent <?php echo $margin_bottom; ?>">
                             <div class="hover-overlay toparentheight"></div>
                             <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-                                <img src="<?php echo esc_url( $post_img ); ?>" alt="<?php echo esc_attr( the_title() ); ?>" />
+                                <img data-layzr="<?php echo esc_url($bg_img); ?>" alt="<?php echo esc_attr( the_title() ); ?>" />
                             </a>
                             <?php get_template_part( 'content', 'excerpt' ); ?>
                         </div>

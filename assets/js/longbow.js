@@ -24,16 +24,19 @@
                 // show posts only when page is ready and all images loaded
                 $('.fp-post').removeClass('transparent');
             },
-            getSocialCounts: function () {
-                if (elements.body.hasClass('single')) {
-                    console.log('single');
-                }
+            lazyLoad: function () {
+                var layzr = new Layzr({
+                    attr: 'data-layzr',
+                    retinaAttr: 'data-layzr-retina',
+                    callback: function() { console.log('loading image'); }
+                });
             }
         };
 
         var events = function () {
             elements.hamburger.on('click', function () {
                 elements.slideMenu.addClass('resetRight');
+                console.log('click');
             });
 
             elements.menuClose.on('click', function () {
@@ -44,14 +47,17 @@
         var init = function () {
             FastClick.attach(document.body);
             events();
-            methods.getSocialCounts();
             methods.showPosts();
+            methods.lazyLoad();
+
+
         };
 
         init();
     };
 
     $(document).ready(function() {
+
         var longbow = new WOCLongbow();
     });
 
