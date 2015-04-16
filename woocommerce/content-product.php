@@ -38,7 +38,8 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 	$classes[] = 'last';
 
 $classes[] = 'col-xs-12';
-$classes[] = 'col-sm-3';
+$classes[] = 'col-sm-4';
+$classes[] = 'col-md-3';
 
 ?>
 <div <?php post_class( $classes ); ?>>

@@ -497,6 +497,26 @@ function longbow_comment_layout($comment, $args, $depth) {
 add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 8;' ), 20 );
 
 /**
+ * WooCommerce - format the star rating section
+ */
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+add_action('woocommerce_after_shop_loop_item_title', 'get_star_rating', 5 );
+function get_star_rating()
+{
+    global $product;
+    $rating_html = '<div class="rating-container">';
+
+    if ( get_option( 'woocommerce_enable_review_rating' ) === 'yes' ) {
+        $average = $product->get_average_rating();
+
+        $rating_html .= '<div class="star-rating"><span style="width:' . ( ( $average / 5 ) * 100 ) . '%"><strong itemprop="ratingValue" class="rating">' . $average . '</strong> ' . __( 'out of 5', 'longbow' ) . '</span></div>';
+    }
+    $rating_html .= '</div>';
+
+    echo $rating_html;
+}
+
+/**
  * Implement the Custom Header feature.
  */
 //require get_template_directory() . '/inc/custom-header.php';

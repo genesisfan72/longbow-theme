@@ -30,7 +30,7 @@ if ( isset( $_GET[ 'fp_layout' ] ) ) {
     <a class="skip-link screen-reader-text" href="#content"><?php _e('Skip to content', 'longbow'); ?></a>
 
     <header id="masthead" class="site-header" role="banner">
-        <?php if ( $layout === 'blog2' ) { ?>
+        <?php if ( $layout === 'blog2' || is_shop() ) { ?>
             <div class="wrap top-menu">
                 <div class="container toparentheight">
                     <div class="row toparentheight">
